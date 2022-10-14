@@ -14,14 +14,20 @@ namespace ServisShoesProject.ServisShoes.Sroting
     public class SortingTc : Basepage
     {
         [TestMethod]
-        public void SortingfunctionTC()
+        public void SortingWithFeature()
         {
             SeleniumInit("Chrome");
-            OpenUrl("https://www.servis.pk/");
+            //OpenUrl("https://www.servis.pk/");
             maxwindow();
 
             Sorting sort = new Sorting();
+
+            
             sort.sorintg("manual");
+            IWebElement actual = driver.FindElement(By.XPath("(//option[text()='Featured'])[1]"));
+            
+
+            Assert.AreEqual(true, actual.Selected);
 
 
         }

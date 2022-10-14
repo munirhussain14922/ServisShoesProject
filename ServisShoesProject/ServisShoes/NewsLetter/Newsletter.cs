@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ServisShoesProject.ServisShoes.NewsLetter
@@ -14,12 +15,18 @@ namespace ServisShoesProject.ServisShoes.NewsLetter
         
             By InputNewsletter = By.Id("Email-footer-newsletter-section");
             By gobutton = By.Id("Subscribe-footer-newsletter-section");
+            By cbtna = By.XPath("//input[@type='submit' and @class='shopify-challenge__button btn']");
+            //By verifynews = By.XPath("//p[text()='Thanks for subscribing']");
 
-            public void Newslter(String Newsle)
+
+        public void Newslter(String Newsle)
             {
                 Write(InputNewsletter, Newsle);
                 Click(gobutton);
-            }
+                Thread.Sleep(20000);
+                Click(cbtna);
+              //  scrollelement1(verifynews);
+        }
 
 
         

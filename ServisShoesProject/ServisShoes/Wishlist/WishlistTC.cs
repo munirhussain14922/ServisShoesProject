@@ -17,12 +17,16 @@ namespace ServisShoesProject.ServisShoes.Wishlist
         public void WISHlistTC()
         {
             SeleniumInit("Chrome");
-            OpenUrl("https://www.servis.pk/");
+            //OpenUrl("https://www.servis.pk/");
             maxwindow();
 
             Wishlist cartlist = new Wishlist();
+            String expected = "YOUR CART";
 
             cartlist.Wishlistmeth();
+            String actual = driver.FindElement(By.XPath("//h1[text()='Your cart']")).Text;
+            Assert.AreEqual(expected, actual);
+
 
 
         }

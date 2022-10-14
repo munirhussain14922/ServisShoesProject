@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using 
+    Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -9,27 +10,26 @@ using System.Threading;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
+using AventStack.ExtentReports;
 
 namespace ServisShoesProject.ServisShoes.Login
 { 
     public class Basepage
     {
-       // public static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public static IWebDriver driver;
         public static void SeleniumInit(string browser)
 
         {
-           // log.Info("Report is Working");
 
             driver = new ChromeDriver();
 
         }
-        public static void OpenUrl(string url)
+        public static void OpenUrl()
 
         {
 
-            driver.Url = url;
+            driver.Url = "https://www.servis.pk/";
 
         }
         public static void Write(By by, string value)
@@ -39,6 +39,21 @@ namespace ServisShoesProject.ServisShoes.Login
             driver.FindElement(by).SendKeys(value);
 
         }
+        //public void Write(By by, string value)
+        //{
+        //    try
+        //    {
+        //        driver.FindElement(by).SendKeys(value);
+        //        TakeScreenshot(Status.Pass, "Enter Text");
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        TakeScreenshot(Status.Fail, "Enter Text: " + ex.ToString());
+        //    }
+        //}
         public void Click(By by)
 
         {
@@ -92,12 +107,30 @@ namespace ServisShoesProject.ServisShoes.Login
             SelectElement dropdownmenu = new SelectElement(dropdown);
             dropdownmenu.SelectByValue(value);
         }
+        public void waitforelement(By by)
+        {
+
+            
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+
+
+        }
+        public static void TakeScreenshot(Status status, string stepDetail)
+        {
+            string path = @"C:\Users\MUNIRHUSSAIN\source\repos\munirhussain14922\ServisShoesProject\ServisShoesProject\screenshots\" + "TestExecLog_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            Screenshot image_username = ((ITakesScreenshot)driver).GetScreenshot();
+            image_username.SaveAsFile(path + ".png", ScreenshotImageFormat.Png);
+            ExtentReport.exChildTest.Log(status, stepDetail, MediaEntityBuilder
+                .CreateScreenCaptureFromPath(path + ".png").Build());
+        }
+        public static void CloseDriver()
+        {
+            driver.Close();
+        }
+       
 
 
 
-
-
-    
 
     }
 }

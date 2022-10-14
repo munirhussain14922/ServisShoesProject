@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
 using ServisShoesProject.ServisShoes.Login;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace ServisShoesProject.ServisShoes.Register
         By lname = By.Id("CreateCustomerForm-lastname");
         By email = By.Id("CreateCustomerForm-email");
         By passwrd = By.Id("CreateCustomerForm-password");
+        By cbtna = By.XPath("//input[@type='submit' and @class='shopify-challenge__button btn']");
+        //By loc = By.XPath("//li[text()='Email is invalid.']");
         By regbtn = By.CssSelector("#create_customer > div > div.flex.items-center.flex-col.justify-center > button");
         public void Registerfun(String firstname, String lastname, String regmail, String paswrd)
         {
@@ -25,7 +28,9 @@ namespace ServisShoesProject.ServisShoes.Register
             Write(email, regmail);
             Write(passwrd, paswrd);
             Click(regbtn);
-            Thread.Sleep(15000);
+            Thread.Sleep(12000);
+            Click(cbtna);
+            
         }
     }
 }
