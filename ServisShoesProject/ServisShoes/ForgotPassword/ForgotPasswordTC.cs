@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using AventStack.ExtentReports;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using ServisShoesProject.ServisShoes.Login;
 using System;
@@ -12,6 +13,7 @@ namespace ServisShoesProject.ServisShoes.ForgotPassword
     [TestClass]
     public  class ForgotPasswordTC : Basepage
     {
+
         public TestContext instance;
 
         public TestContext TestContext
@@ -23,20 +25,48 @@ namespace ServisShoesProject.ServisShoes.ForgotPassword
             get { return instance; }
 
         }
+        [ClassInitialize]
+        public static void ClassInitialize(TestContext TestContext)
+        {
+
+            ExtentReport.LogReport("Extent Report");
+        }
+        [ClassCleanup]
+        public static void ClassCleanUp()
+        {
+            ExtentReport.extentReports.Flush();
+        }
+        [TestInitialize()]
+        public void TestInit()
+        {
+            SeleniumInit("Chrome");
+        }
+
+        [TestCleanup()]
+        public void TestCleanUp()
+        {
+            CloseDriver();
+        }
+
+
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "Testdata.xml", "ForgotPasswordWithValid", DataAccessMethod.Sequential)]
 
         public void ValidforgotPasswordTC()
         {
-            SeleniumInit("Chrome");
-            //OpenUrl("https://www.servis.pk/");
+            OpenUrl();
             maxwindow();
-
             forgotpasspage forpass = new forgotpasspage();
 
+            ExtentReport.exChildTest = ExtentReport.extentReports.CreateTest("Forgot Password With Valid");
+
             String email = TestContext.DataRow["email"].ToString();
+            ExtentReport.exChildTest.Log(Status.Pass, "Enter Email Address");
+
             String expected = TestContext.DataRow["message"].ToString();
             forpass.ForgotPassword(email);
+            ExtentReport.exChildTest.Log(Status.Pass, "Click Submit");
+
             String actual = driver.FindElement(By.XPath("//h1[text()='Reset your password']")).Text;
             Assert.AreEqual(expected, actual);
 
@@ -47,14 +77,18 @@ namespace ServisShoesProject.ServisShoes.ForgotPassword
 
         public void InvalidforgotPasswordTC()
         {
-            SeleniumInit("Chrome");
-            //OpenUrl("https://www.servis.pk/");
+            OpenUrl();
             maxwindow();
-
             forgotpasspage forpass = new forgotpasspage();
+            ExtentReport.exChildTest = ExtentReport.extentReports.CreateTest("Forgot Password With InValid");
+
             String email = TestContext.DataRow["email"].ToString();
+            ExtentReport.exChildTest.Log(Status.Pass, "Enter Email Address");
+
             String expected = TestContext.DataRow["message"].ToString();
             forpass.ForgotPassword(email);
+            ExtentReport.exChildTest.Log(Status.Pass, "Click Submit");
+
             String actual = driver.FindElement(By.XPath("//h1[text()='Reset your password']")).Text;
             Assert.AreEqual(expected, actual);
 

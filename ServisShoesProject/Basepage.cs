@@ -32,33 +32,39 @@ namespace ServisShoesProject.ServisShoes.Login
             driver.Url = "https://www.servis.pk/";
 
         }
-        public static void Write(By by, string value)
+        //public static void Write(By by, string value)
 
-        {
-
-            driver.FindElement(by).SendKeys(value);
-
-        }
-        //public void Write(By by, string value)
         //{
-        //    try
-        //    {
-        //        driver.FindElement(by).SendKeys(value);
-        //        TakeScreenshot(Status.Pass, "Enter Text");
 
+        //    driver.FindElement(by).SendKeys(value);
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        TakeScreenshot(Status.Fail, "Enter Text: " + ex.ToString());
-        //    }
         //}
+        public void Write(By by, string value)
+        {
+            try
+            {
+                driver.FindElement(by).SendKeys(value);
+                //TakeScreenshot(Status.Pass, "Enter Text");
+
+
+            }
+            catch (Exception )
+            {
+
+                //TakeScreenshot(Status.Fail, "Enter Text: " + ex.ToString());
+            }
+        }
         public void Click(By by)
 
         {
+            try
+            {
+                driver.FindElement(by).Click();
+            }
+            catch (Exception)
+            {
 
-            driver.FindElement(by).Click();
+            }
 
         }
 
@@ -69,12 +75,12 @@ namespace ServisShoesProject.ServisShoes.Login
             Thread.Sleep(2000);
             js.ExecuteScript("window.scrollBy(0,2000);");
         }
-        public void scrollelement(IWebElement by)
-        {
-            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", by);
-            IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
-            executor.ExecuteScript("document.body.style.zoom='0.5'");
-        }
+        //public void scrollelement(IWebElement by)
+        //{
+        //    ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", by);
+        //    IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
+        //    executor.ExecuteScript("document.body.style.zoom='0.5'");
+        //}
         public void scrollelement1(By by)
         {
             var scrollement = driver.FindElement(by);
@@ -92,14 +98,12 @@ namespace ServisShoesProject.ServisShoes.Login
             IJavaScriptExecutor js = driver as IJavaScriptExecutor;
             IAlert alter = driver.SwitchTo().Alert();
             alter.Accept();
-            //driver.FindElement(By.XPath("//button[text()='Later']"));
 
         }
         public void hoverhandle(By by)
         {
             Actions hover = new Actions(driver);
             hover.MoveToElement(driver.FindElement(by)).Build().Perform();
-            // driver.FindElement(by).Click();
         }
         public void Selectdrop(By by, String value)
         {
@@ -127,10 +131,23 @@ namespace ServisShoesProject.ServisShoes.Login
         {
             driver.Close();
         }
-       
+        public static void PlaybackWait(int miliSeconds)
 
+        {
 
+            Thread.Sleep(miliSeconds);
 
+        }
+        public static void ScrolToDown()
+        {
+            IJavaScriptExecutor js = driver as IJavaScriptExecutor;
+            js.ExecuteScript("window.scrollBy(0,document.body.scrollHeight)");
+        }
+        public static void ScrollToTop()
+        {
+            IJavaScriptExecutor js = driver as IJavaScriptExecutor;
+            js.ExecuteScript("window.scrollBy(0,document.head.scrollHeight)");
+        }
 
     }
 }

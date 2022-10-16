@@ -48,7 +48,6 @@ namespace ServisShoesProject.ServisShoes.Login
         [TestInitialize()]
         public void TestInit()
         {
-            ExtentReport.LogReport(TestContext.TestName);
             SeleniumInit("Chrome");
         }
 
@@ -57,6 +56,8 @@ namespace ServisShoesProject.ServisShoes.Login
         {
             CloseDriver();
         }
+
+
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "Testdata.xml", "LoginWithValid", DataAccessMethod.Sequential)]
         public void Valid_LoginTC()
@@ -65,8 +66,8 @@ namespace ServisShoesProject.ServisShoes.Login
             maxwindow();
             LoginPage logpage = new LoginPage();
 
-            ExtentReport.exParentTest = ExtentReport.extentReports.CreateTest(TestContext.TestName);
-            ExtentReport.exChildTest = ExtentReport.exParentTest.CreateNode("Valid Login Test Case");
+            ExtentReport.exChildTest = ExtentReport.extentReports.CreateTest("Login With Valid");
+
 
             String username = TestContext.DataRow["username"].ToString();
             ExtentReport.exChildTest.Log(Status.Pass, "Enter UserName");
@@ -90,8 +91,7 @@ namespace ServisShoesProject.ServisShoes.Login
             maxwindow();
             LoginPage logpage = new LoginPage();
 
-            ExtentReport.exParentTest = ExtentReport.extentReports.CreateTest(TestContext.TestName);
-            ExtentReport.exChildTest = ExtentReport.exParentTest.CreateNode("InValid Login Test Case");
+            ExtentReport.exChildTest = ExtentReport.extentReports.CreateTest("Login With Invalid");
 
             String username = TestContext.DataRow["username"].ToString();
             ExtentReport.exChildTest.Log(Status.Pass, "Enter UserName");

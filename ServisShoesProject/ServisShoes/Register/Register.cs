@@ -18,7 +18,6 @@ namespace ServisShoesProject.ServisShoes.Register
         By email = By.Id("CreateCustomerForm-email");
         By passwrd = By.Id("CreateCustomerForm-password");
         By cbtna = By.XPath("//input[@type='submit' and @class='shopify-challenge__button btn']");
-        //By loc = By.XPath("//li[text()='Email is invalid.']");
         By regbtn = By.CssSelector("#create_customer > div > div.flex.items-center.flex-col.justify-center > button");
         public void Registerfun(String firstname, String lastname, String regmail, String paswrd)
         {

@@ -24,17 +24,7 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
             get { return instance; }
 
         }
-        //[AssemblyInitialize()]
-        //public static void AssemblyInit(TestContext context)
-        //{
-
-        //}
-
-        //[AssemblyCleanup()]
-        //public static void AssemblyCleanup()
-        //{
-
-        //}
+       
         [ClassInitialize]
         public static void ClassInitialize(TestContext TestContext)
         {
@@ -49,7 +39,7 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
         [TestInitialize()]
         public void TestInit()
         {
-            ExtentReport.LogReport(TestContext.TestName);
+       
             SeleniumInit("Chrome");
         }
 
@@ -70,8 +60,8 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
 
             addtocartPage adcart = new addtocartPage();
 
-            ExtentReport.exParentTest = ExtentReport.extentReports.CreateTest(TestContext.TestName);
-            ExtentReport.exChildTest = ExtentReport.exParentTest.CreateNode("InValid Add to Cart Test Case");
+            ExtentReport.exChildTest = ExtentReport.extentReports.CreateTest("Add to Cart With Invalid");
+
 
             ExtentReport.exChildTest.Log(Status.Pass, "Click Product");
             ExtentReport.exChildTest.Log(Status.Pass, "Click Chappal");
@@ -102,8 +92,8 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
             String apart = TestContext.DataRow["aprt"].ToString();
             ExtentReport.exChildTest.Log(Status.Pass, "Enter Apartment Details");
 
-            String cityName = TestContext.DataRow["CityName"].ToString();
-            ExtentReport.exChildTest.Log(Status.Pass, "Enter City Name");
+            //String cityName = TestContext.DataRow["CityName"].ToString();
+            //ExtentReport.exChildTest.Log(Status.Pass, "Enter City Name");
 
             String postal = TestContext.DataRow["postal"].ToString();
             ExtentReport.exChildTest.Log(Status.Pass, "Enter Postal Code");
@@ -132,8 +122,10 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
             
             OpenUrl();
             maxwindow();
-            ExtentReport.exParentTest = ExtentReport.extentReports.CreateTest(TestContext.TestName);
-            ExtentReport.exChildTest = ExtentReport.exParentTest.CreateNode("Valid Add to Cart Test Case");
+
+            ExtentReport.exChildTest = ExtentReport.extentReports.CreateTest("Add to Cart With Valid");
+
+
             addtocartPage adcart = new addtocartPage();
             ExtentReport.exChildTest.Log(Status.Pass, "Click Product");
             ExtentReport.exChildTest.Log(Status.Pass, "Click Chappal");
@@ -179,7 +171,8 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
             ExtentReport.exChildTest.Log(Status.Pass, "Click Shiping");
             ExtentReport.exChildTest.Log(Status.Pass, "Click Payment");
 
-            adcart.adtocart(order_s, sel_city, mail, firstname, lastname, adress, apart, postal, phoneno);
+            String actual = driver.FindElement(By.XPath("//span[text()='Cash on Delivery (COD)']")).Text;
+            Assert.AreEqual(expected, actual);
 
         }
     }

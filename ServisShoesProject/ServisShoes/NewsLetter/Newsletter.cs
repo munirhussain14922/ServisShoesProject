@@ -16,7 +16,6 @@ namespace ServisShoesProject.ServisShoes.NewsLetter
             By InputNewsletter = By.Id("Email-footer-newsletter-section");
             By gobutton = By.Id("Subscribe-footer-newsletter-section");
             By cbtna = By.XPath("//input[@type='submit' and @class='shopify-challenge__button btn']");
-            //By verifynews = By.XPath("//p[text()='Thanks for subscribing']");
 
 
         public void Newslter(String Newsle)
@@ -25,10 +24,8 @@ namespace ServisShoesProject.ServisShoes.NewsLetter
                 Click(gobutton);
                 Thread.Sleep(20000);
                 Click(cbtna);
-              //  scrollelement1(verifynews);
+                ScrolToDown();
         }
 
-
-        
     }
 }

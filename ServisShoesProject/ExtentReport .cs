@@ -27,9 +27,6 @@ namespace ServisShoesProject.ServisShoes
             extentReports.AttachReporter(htmlReporter);
         }
 
-        internal static object StartTest(string testName)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

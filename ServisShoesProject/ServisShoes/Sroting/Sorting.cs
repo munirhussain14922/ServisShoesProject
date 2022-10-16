@@ -19,11 +19,7 @@ namespace ServisShoesProject.ServisShoes.Sroting
         {
             hoverhandle(ho);
             Click(homenu);
-
             Selectdrop(selectsorting, dro);
-
-
-
         }
     }
 }

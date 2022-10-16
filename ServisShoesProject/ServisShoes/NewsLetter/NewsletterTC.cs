@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using AventStack.ExtentReports;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using ServisShoesProject.ServisShoes.Login;
 using System;
@@ -23,21 +24,78 @@ namespace ServisShoesProject.ServisShoes.NewsLetter
             get { return instance; }
 
         }
+
+        [ClassInitialize]
+        public static void ClassInitialize(TestContext TestContext)
+        {
+
+            ExtentReport.LogReport("Extent Report");
+        }
+        [ClassCleanup]
+        public static void ClassCleanUp()
+        {
+            ExtentReport.extentReports.Flush();
+        }
+        [TestInitialize()]
+        public void TestInit()
+        {
+            SeleniumInit("Chrome");
+        }
+
+        [TestCleanup()]
+        public void TestCleanUp()
+        {
+            CloseDriver();
+        }
+
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "Testdata.xml", "NewletterWithValid", DataAccessMethod.Sequential)]
 
-        public void Newslter()
+        public void NewsletterWithValid()
         {
-            SeleniumInit("Chrome");
             OpenUrl();
             maxwindow();
 
             Newsletter newss = new Newsletter();
+
+            ExtentReport.exChildTest = ExtentReport.extentReports.CreateTest("NewsLetter With Valid");
+
             String email = TestContext.DataRow["email"].ToString();
+            ExtentReport.exChildTest.Log(Status.Pass, "Enter Email ");
+
             String expected = TestContext.DataRow["message"].ToString();
             newss.Newslter(email);
-           // String actual = driver.FindElement(By.XPath("//p[text()='Thanks for subscribing']")).Text;
-            //Assert.AreEqual(expected, actual);
+            ExtentReport.exChildTest.Log(Status.Pass, "Click Go");
+
+            String actual = driver.FindElement(By.XPath("//p[text()='Thanks for subscribing']")).Text;
+            Assert.AreEqual(expected, actual);
+
+
+        }
+
+
+
+        [TestMethod]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "Testdata.xml", "NewletterWithinValid", DataAccessMethod.Sequential)]
+
+        public void NewsletterWithInValid()
+        {
+            OpenUrl();
+            maxwindow();
+
+            Newsletter newss = new Newsletter();
+
+            ExtentReport.exChildTest = ExtentReport.extentReports.CreateTest("NewsLetter With InValid");
+
+            String email = TestContext.DataRow["email"].ToString();
+            ExtentReport.exChildTest.Log(Status.Pass, "Enter Email ");
+
+            String expected = TestContext.DataRow["message"].ToString();
+            newss.Newslter(email);
+            ExtentReport.exChildTest.Log(Status.Pass, "Click Go");
+
+            String actual = driver.FindElement(By.Id("Email-footer-newsletter-section")).Text;
+            Assert.AreNotEqual(expected, actual);
 
 
         }

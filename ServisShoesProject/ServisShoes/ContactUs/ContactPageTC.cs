@@ -40,7 +40,6 @@ namespace ServisShoesProject.ServisShoes.ContactUs
         [TestInitialize()]
         public void TestInit()
         {
-            ExtentReport.LogReport(TestContext.TestName);
             SeleniumInit("Chrome");
         }
 
@@ -59,9 +58,9 @@ namespace ServisShoesProject.ServisShoes.ContactUs
             maxwindow();
             scroll();
             ContactUsPage contact = new ContactUsPage();
-            //contact.cont("munir", "munir@gmail.com", "0302595301", "munirhussain");
-            ExtentReport.exParentTest = ExtentReport.extentReports.CreateTest(TestContext.TestName);
-            ExtentReport.exChildTest = ExtentReport.exParentTest.CreateNode("Invalid Contact us Page");
+
+
+            ExtentReport.exChildTest=ExtentReport.extentReports.CreateTest("Contact Us With Valid");
 
             String namee = TestContext.DataRow["name"].ToString();
             ExtentReport.exChildTest.Log(Status.Pass, "Enter Name");
@@ -97,8 +96,8 @@ namespace ServisShoesProject.ServisShoes.ContactUs
             maxwindow();
             scroll();
             ContactUsPage contact = new ContactUsPage();
-            ExtentReport.exParentTest = ExtentReport.extentReports.CreateTest(TestContext.TestName);
-            ExtentReport.exChildTest = ExtentReport.exParentTest.CreateNode("Valid Contact us Page");
+            ExtentReport.exChildTest = ExtentReport.extentReports.CreateTest("Contact Us With InValid");
+
 
             String namee = TestContext.DataRow["name"].ToString();
             ExtentReport.exChildTest.Log(Status.Pass, "Enter Name");

@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using AventStack.ExtentReports;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using ServisShoesProject.ServisShoes.Login;
 using System;
@@ -13,17 +14,42 @@ namespace ServisShoesProject.ServisShoes.Sroting
     [TestClass]
     public class SortingTc : Basepage
     {
+        [ClassInitialize]
+        public static void ClassInitialize(TestContext TestContext)
+        {
+
+            ExtentReport.LogReport("Extent Report");
+        }
+        [ClassCleanup]
+        public static void ClassCleanUp()
+        {
+            ExtentReport.extentReports.Flush();
+        }
+        [TestInitialize()]
+        public void TestInit()
+        {
+            SeleniumInit("Chrome");
+        }
+
+        [TestCleanup()]
+        public void TestCleanUp()
+        {
+            CloseDriver();
+        }
         [TestMethod]
         public void SortingWithFeature()
         {
-            SeleniumInit("Chrome");
-            //OpenUrl("https://www.servis.pk/");
+            OpenUrl();
             maxwindow();
-
             Sorting sort = new Sorting();
+            ExtentReport.exChildTest = ExtentReport.extentReports.CreateTest("Soriting With Valid Feature");
 
-            
+            ExtentReport.exChildTest.Log(Status.Pass, "Hover Over New Arrivals");
+            ExtentReport.exChildTest.Log(Status.Pass, "Click Men");
+
             sort.sorintg("manual");
+            ExtentReport.exChildTest.Log(Status.Pass, "Select Feature");
+
             IWebElement actual = driver.FindElement(By.XPath("(//option[text()='Featured'])[1]"));
             
 
