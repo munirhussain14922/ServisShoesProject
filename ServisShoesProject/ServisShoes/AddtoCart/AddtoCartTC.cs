@@ -89,8 +89,8 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
             String adress = TestContext.DataRow["City_name"].ToString();
             ExtentReport.exChildTest.Log(Status.Pass, "Enter City Name");
 
-            String apart = TestContext.DataRow["aprt"].ToString();
-            ExtentReport.exChildTest.Log(Status.Pass, "Enter Apartment Details");
+            //String apart = TestContext.DataRow["aprt"].ToString();
+            //ExtentReport.exChildTest.Log(Status.Pass, "Enter Apartment Details");
 
             //String cityName = TestContext.DataRow["CityName"].ToString();
             //ExtentReport.exChildTest.Log(Status.Pass, "Enter City Name");
@@ -101,7 +101,7 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
             String phoneno = TestContext.DataRow["phone"].ToString();
             ExtentReport.exChildTest.Log(Status.Pass, "Enter Phone Number");
 
-            adcart.adtocart(order_s, sel_city, mail, firstname, lastname, adress, apart, postal, phoneno);
+            adcart.adtocart(order_s, sel_city, mail, firstname, lastname, adress, postal, phoneno);
             String expected = TestContext.DataRow["message"].ToString();
 
             ExtentReport.exChildTest.Log(Status.Pass, "Click Shiping");
@@ -153,8 +153,8 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
             String adress = TestContext.DataRow["City_name"].ToString();
             ExtentReport.exChildTest.Log(Status.Pass, "Enter City Name");
 
-            String apart = TestContext.DataRow["aprt"].ToString();
-            ExtentReport.exChildTest.Log(Status.Pass, "Enter Apartment Details");
+            //String apart = TestContext.DataRow["aprt"].ToString();
+            //ExtentReport.exChildTest.Log(Status.Pass, "Enter Apartment Details");
 
             //String cityName = TestContext.DataRow["CityName"].ToString();
             //ExtentReport.exChildTest.Log(Status.Pass, "Enter City Name");
@@ -165,7 +165,7 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
             String phoneno = TestContext.DataRow["phone"].ToString();
             ExtentReport.exChildTest.Log(Status.Pass, "Enter Phone Number");
 
-            adcart.adtocart(order_s, sel_city, mail, firstname, lastname, adress, apart, postal, phoneno);
+            adcart.adtocart(order_s, sel_city, mail, firstname, lastname, adress, postal, phoneno);
             String expected = TestContext.DataRow["message"].ToString();
 
             ExtentReport.exChildTest.Log(Status.Pass, "Click Shiping");

@@ -67,7 +67,7 @@ namespace ServisShoesProject.ServisShoes.ForgotPassword
             forpass.ForgotPassword(email);
             ExtentReport.exChildTest.Log(Status.Pass, "Click Submit");
 
-            String actual = driver.FindElement(By.XPath("//h1[text()='Reset your password']")).Text;
+            String actual = driver.FindElement(By.XPath("//p[text()='We will send you an email to reset your password']")).Text;
             Assert.AreEqual(expected, actual);
 
 
@@ -89,7 +89,7 @@ namespace ServisShoesProject.ServisShoes.ForgotPassword
             forpass.ForgotPassword(email);
             ExtentReport.exChildTest.Log(Status.Pass, "Click Submit");
 
-            String actual = driver.FindElement(By.XPath("//h1[text()='Reset your password']")).Text;
+            String actual = driver.FindElement(By.XPath("//p[text()='We will send you an email to reset your password']")).Text;
             Assert.AreEqual(expected, actual);
 
         }

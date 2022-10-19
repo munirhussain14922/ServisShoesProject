@@ -35,33 +35,33 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
         By phone = By.Id("TextField7");
         By shipping = By.XPath("//button[@class='_2pOWh uWTUp _1Kqoj _2tVwl _3MrgP _10zXD sd4hU']");
         By payment = By.XPath("//*[@id='Form2']//child::button[1]");
-       // By completeorder = By.CssSelector("#Form3 > div:nth-child(1) > div > div._3XHWd._7J8O > div:nth-child(1) > button");
+        By newscancel = By.XPath("//img[@class='news-close-img']");
+
+        // By completeorder = By.CssSelector("#Form3 > div:nth-child(1) > div > div._3XHWd._7J8O > div:nth-child(1) > button");
 
         //By payment = By.XPath("//button[@class='_2pOWh uWTUp _1Kqoj _2tVwl _3MrgP _10zXD sd4hU']");
 
-        public void adtocart(String desc, String citywt, String mail, String faname, String lanme, String Addresss, String aprtment, String postalcode, String phoneno)
+        public void adtocart(String desc, String citywt, String mail, String faname, String lanme, String Addresss, String postalcode, String phoneno)
         {
             Click(prodt);
           
             Click(chapp);
             Click(size);
             Click(quanityt);
-            Thread.Sleep(4000); 
+            PlaybackWait(400); 
             Click(btnadd);
-            //Thread.Sleep(4000);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            ImplicitWait();
             Click(viewcart);
             Write(description, desc);
             Click(selectcity);
             Write(citywrite, citywt + Keys.Enter);
             Click(agree);
             Click(checkout);
-            Thread.Sleep(4000);
+            PlaybackWait(2000);
             Write(email, mail);
             Write(fname, faname);
             Write(lname, lanme);
             Write(address, Addresss);
-            Write(apart, aprtment);
             Write(postal, postalcode);
             Write(phone, phoneno);
             Click(shipping);

@@ -19,6 +19,8 @@ namespace ServisShoesProject.ServisShoes.Logout
         By cbtna = By.XPath("//input[@type='submit' and @class='shopify-challenge__button btn']");
         By logoutbtn = By.XPath("(//a[@href='/account/logout'])[1]");
         By wiatlog = By.XPath("(//a[@href='/account' and @class='header-top__link'])[1]");
+        By newscancel = By.XPath("//img[@class='news-close-img']");
+
 
 
 
@@ -28,9 +30,10 @@ namespace ServisShoesProject.ServisShoes.Logout
             Write(phoneEmail, user);
             Write(pass, pass1);
             Click(loginButton);
-            Thread.Sleep(20000);
+            PlaybackWait(20000);
+            Click(newscancel);
             Click(cbtna);
-            Thread.Sleep(1500);
+            PlaybackWait(1500);
             Click(logoutbtn);
         }
 

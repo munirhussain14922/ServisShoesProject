@@ -17,6 +17,7 @@ namespace ServisShoesProject.ServisShoes.Login
         By pass = By.Id("CustomerForm-password");
         By cbtna = By.XPath("//input[@type='submit' and @class='shopify-challenge__button btn']");
         By loginButton = By.CssSelector("#customer_login > div > div.flex.items-center.flex-col.justify-center > button");
+        By newscancel = By.XPath("//img[@class='news-close-img']");
 
         public void Loginfunction(String user, String pass1)
         {
@@ -24,7 +25,8 @@ namespace ServisShoesProject.ServisShoes.Login
             Write(phoneEmail, user);
             Write(pass, pass1);
             Click(loginButton);
-            Thread.Sleep(20000);
+            PlaybackWait(20000);
+            Click(newscancel);
             Click(cbtna);
         }
         

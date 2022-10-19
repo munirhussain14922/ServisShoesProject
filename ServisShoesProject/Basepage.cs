@@ -1,5 +1,4 @@
-﻿using 
-    Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -11,6 +10,8 @@ using System.Threading.Tasks;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using AventStack.ExtentReports;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
 
 namespace ServisShoesProject.ServisShoes.Login
 { 
@@ -21,8 +22,26 @@ namespace ServisShoesProject.ServisShoes.Login
         public static void SeleniumInit(string browser)
 
         {
+            if (browser == "Chrome")
+            {
+                driver = new ChromeDriver();
+            }
+            else if (browser == "Edge")
+            {
+                driver = new EdgeDriver();
+            }
+            else if (browser == "FireFox")
+            {
+                driver = new FirefoxDriver();
+            }
 
-            driver = new ChromeDriver();
+
+        }
+        public void Clear(By by)
+
+        {
+
+            driver.FindElement(by).Clear();
 
         }
         public static void OpenUrl()
@@ -147,6 +166,11 @@ namespace ServisShoesProject.ServisShoes.Login
         {
             IJavaScriptExecutor js = driver as IJavaScriptExecutor;
             js.ExecuteScript("window.scrollBy(0,document.head.scrollHeight)");
+        }
+        public static void ImplicitWait()
+        {
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+
         }
 
     }

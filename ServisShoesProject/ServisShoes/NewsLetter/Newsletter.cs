@@ -16,13 +16,16 @@ namespace ServisShoesProject.ServisShoes.NewsLetter
             By InputNewsletter = By.Id("Email-footer-newsletter-section");
             By gobutton = By.Id("Subscribe-footer-newsletter-section");
             By cbtna = By.XPath("//input[@type='submit' and @class='shopify-challenge__button btn']");
+            By newscancel = By.XPath("//img[@class='news-close-img']");
+
 
 
         public void Newslter(String Newsle)
             {
                 Write(InputNewsletter, Newsle);
                 Click(gobutton);
-                Thread.Sleep(20000);
+                PlaybackWait(20000);
+                Click(newscancel);
                 Click(cbtna);
                 ScrolToDown();
         }

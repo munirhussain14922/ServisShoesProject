@@ -29,9 +29,9 @@ namespace ServisShoesProject.ServisShoes.Wishlist
             Click(chapp);
             Click(size);
             Click(quanityt);
-            Thread.Sleep(6000);
+            PlaybackWait(400);
             Click(btnadd);
-            Thread.Sleep(6000);
+            ImplicitWait();
             Click(viewcart);
         }
     }

@@ -22,6 +22,8 @@ namespace ServisShoesProject.ServisShoes.ContactUs
         By ho = By.Id("DetailsMenu-header-menu-1");
         By homenu = By.CssSelector("#InlineMenu-header-menu-child-1 > li:nth-child(1)");
         By cbtna = By.XPath("//input[@type='submit' and @class='shopify-challenge__button btn']");
+        By newscancel = By.XPath("//img[@class='news-close-img']");
+
 
 
         public void cont(String namee, String emailo, String phoneno, String comment)
@@ -34,7 +36,8 @@ namespace ServisShoesProject.ServisShoes.ContactUs
             Write(phone, phoneno);
             Write(cmt, comment);
             Click(btn);
-            Thread.Sleep(20000);
+            PlaybackWait(20000);
+            Click(newscancel);
             Click(cbtna);
         }
      

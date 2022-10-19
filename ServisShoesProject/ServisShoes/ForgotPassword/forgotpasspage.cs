@@ -18,6 +18,7 @@ namespace ServisShoesProject.ServisShoes.ForgotPassword
         By Inputemail = By.Id("RecoverEmail");
         By submit = By.XPath("(//button[@class='button button--cta button--solid'])[1]");
         By cbtna = By.XPath("//input[@type='submit' and @class='shopify-challenge__button btn']");
+        By newscancel = By.XPath("//img[@class='news-close-img']");
 
 
         public void ForgotPassword(String emailadress)
@@ -26,10 +27,12 @@ namespace ServisShoesProject.ServisShoes.ForgotPassword
             Click(recoverbtn);
             Write(Inputemail, emailadress);
             Click(submit);
-            Thread.Sleep(20000);
+            PlaybackWait(20000);
+            Click(newscancel);
             Click(cbtna);
+            PlaybackWait(5000);
 
         }
-       
+
     }
 }
