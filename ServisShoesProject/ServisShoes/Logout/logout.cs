@@ -12,6 +12,7 @@ namespace ServisShoesProject.ServisShoes.Logout
 {
     public class logout : Basepage
     {
+        #region LogoutPage Locators
         By clicklogin = By.XPath("(//a[@href='/account/login'])[1]");
         By phoneEmail = By.Id("CustomerForm-email");
         By pass = By.Id("CustomerForm-password");
@@ -19,23 +20,25 @@ namespace ServisShoesProject.ServisShoes.Logout
         By cbtna = By.XPath("//input[@type='submit' and @class='shopify-challenge__button btn']");
         By logoutbtn = By.XPath("(//a[@href='/account/logout'])[1]");
         By wiatlog = By.XPath("(//a[@href='/account' and @class='header-top__link'])[1]");
-        By newscancel = By.XPath("//img[@class='news-close-img']");
+        //By newscancel = By.XPath("//img[@class='news-close-img']");
 
+        #endregion
 
-
-
+        #region Logout Method
         public void Logoutfunction(String user, String pass1)
         {
+            PageLoad();
             Click(clicklogin);
             Write(phoneEmail, user);
             Write(pass, pass1);
             Click(loginButton);
             PlaybackWait(20000);
-            Click(newscancel);
+            //Click(newscancel);
             Click(cbtna);
             PlaybackWait(1500);
             Click(logoutbtn);
         }
+        #endregion
 
     }
 }

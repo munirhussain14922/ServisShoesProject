@@ -13,7 +13,7 @@ namespace ServisShoesProject.ServisShoes.ForgotPassword
     [TestClass]
     public  class ForgotPasswordTC : Basepage
     {
-
+        #region Setup and Cleanup
         public TestContext instance;
 
         public TestContext TestContext
@@ -48,7 +48,10 @@ namespace ServisShoesProject.ServisShoes.ForgotPassword
             CloseDriver();
         }
 
+        #endregion
 
+
+        #region ForgotPassword Test Cases
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "Testdata.xml", "ForgotPasswordWithValid", DataAccessMethod.Sequential)]
 
@@ -94,5 +97,6 @@ namespace ServisShoesProject.ServisShoes.ForgotPassword
 
         }
 
+        #endregion
     }
 }

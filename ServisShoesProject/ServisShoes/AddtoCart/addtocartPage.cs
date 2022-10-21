@@ -13,6 +13,7 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
 
     public class addtocartPage : Basepage
     {
+        #region Add to Carts Locators
         By prodt = By.XPath("//a[@href='/collections/men-sandal-chapal']");
         
         By chapp = By.CssSelector("#ProductCard-template--14192492445814__collection-6722006646902 > a > div.product-card__labels-container.inset-0.absolute");
@@ -35,22 +36,24 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
         By phone = By.Id("TextField7");
         By shipping = By.XPath("//button[@class='_2pOWh uWTUp _1Kqoj _2tVwl _3MrgP _10zXD sd4hU']");
         By payment = By.XPath("//*[@id='Form2']//child::button[1]");
-        By newscancel = By.XPath("//img[@class='news-close-img']");
+        //By newscancel = By.XPath("//img[@class='news-close-img']");
 
         // By completeorder = By.CssSelector("#Form3 > div:nth-child(1) > div > div._3XHWd._7J8O > div:nth-child(1) > button");
 
         //By payment = By.XPath("//button[@class='_2pOWh uWTUp _1Kqoj _2tVwl _3MrgP _10zXD sd4hU']");
-
+        #endregion
         public void adtocart(String desc, String citywt, String mail, String faname, String lanme, String Addresss, String postalcode, String phoneno)
         {
+            #region Addto Cart Method 
+            PageLoad();
             Click(prodt);
-          
             Click(chapp);
             Click(size);
             Click(quanityt);
             PlaybackWait(400); 
             Click(btnadd);
-            ImplicitWait();
+            PlaybackWait(4000);
+            //ImplicitWait();
             Click(viewcart);
             Write(description, desc);
             Click(selectcity);
@@ -72,8 +75,8 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
             //var bnt= driver.FindElement(By.XPath("//span[text()='Continue to payment']"));
             //bool element = bnt.Enabled;
             //Assert.IsTrue(element);
-
+            #endregion
         }
-        
+
     }
 }

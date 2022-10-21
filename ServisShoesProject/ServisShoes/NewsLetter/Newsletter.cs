@@ -11,24 +11,26 @@ namespace ServisShoesProject.ServisShoes.NewsLetter
 {
     public class Newsletter : Basepage
     {
-       
-        
+        #region NewsLetter Locators
+
             By InputNewsletter = By.Id("Email-footer-newsletter-section");
             By gobutton = By.Id("Subscribe-footer-newsletter-section");
             By cbtna = By.XPath("//input[@type='submit' and @class='shopify-challenge__button btn']");
-            By newscancel = By.XPath("//img[@class='news-close-img']");
+            //By newscancel = By.XPath("//img[@class='news-close-img']");
+        #endregion
 
-
-
+        #region NewsLetter Method
         public void Newslter(String Newsle)
             {
+                PageLoad();
                 Write(InputNewsletter, Newsle);
                 Click(gobutton);
                 PlaybackWait(20000);
-                Click(newscancel);
+                //Click(newscancel);
                 Click(cbtna);
                 ScrolToDown();
-        }
+              }
+        #endregion
 
     }
 }

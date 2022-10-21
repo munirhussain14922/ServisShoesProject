@@ -50,7 +50,7 @@ namespace ServisShoesProject.ServisShoes.Register
         }
         #endregion
 
-
+        #region RegisterPage Test Cases
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "Testdata.xml", "RegsiterWithValid", DataAccessMethod.Sequential)]
         public void ValidRegisterTC()
@@ -117,5 +117,7 @@ namespace ServisShoesProject.ServisShoes.Register
 
 
         }
+        #endregion
     }
+
 }

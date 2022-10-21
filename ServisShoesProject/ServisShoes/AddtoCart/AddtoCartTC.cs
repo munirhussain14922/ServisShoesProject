@@ -13,6 +13,7 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
     [TestClass]
     public class AddtoCartTC : Basepage
     {
+        #region Setup and Cleanup
         public TestContext instance;
 
         public TestContext TestContext
@@ -49,7 +50,9 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
             CloseDriver();
         }
 
+        #endregion
 
+        #region Add to Cart Test Cases
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "TestData#csv", "TestData.csv", DataAccessMethod.Sequential)]
         public void invalidAdtocarttTC()
@@ -175,5 +178,6 @@ namespace ServisShoesProject.ServisShoes.AddtoCart
             Assert.AreEqual(expected, actual);
 
         }
+        #endregion
     }
 }

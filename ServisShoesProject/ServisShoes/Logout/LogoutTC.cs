@@ -13,6 +13,7 @@ namespace ServisShoesProject.ServisShoes.Logout
     [TestClass]
     public class LogoutTC : Basepage
     {
+        #region Setup and Cleanup
         public TestContext instance;
 
         public TestContext TestContext
@@ -46,6 +47,10 @@ namespace ServisShoesProject.ServisShoes.Logout
         {
             CloseDriver();
         }
+        #endregion
+
+
+        #region Logout Test case
 
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "Testdata.xml", "LogoutWithValid", DataAccessMethod.Sequential)]
@@ -73,6 +78,6 @@ namespace ServisShoesProject.ServisShoes.Logout
          
 
         }
-
+        #endregion
     }
 }

@@ -14,6 +14,7 @@ namespace ServisShoesProject.ServisShoes.Sroting
     [TestClass]
     public class SortingTc : Basepage
     {
+        #region Setup and Cleanup
         [ClassInitialize]
         public static void ClassInitialize(TestContext TestContext)
         {
@@ -36,6 +37,12 @@ namespace ServisShoesProject.ServisShoes.Sroting
         {
             CloseDriver();
         }
+
+
+        #endregion
+
+
+        #region Sorting Test Case
         [TestMethod]
         public void SortingWithFeature()
         {
@@ -51,10 +58,12 @@ namespace ServisShoesProject.ServisShoes.Sroting
             ExtentReport.exChildTest.Log(Status.Pass, "Select Feature");
 
             IWebElement actual = driver.FindElement(By.XPath("(//option[text()='Featured'])[1]"));
-            
+
 
             Assert.AreEqual(true, actual.Selected);
 
+
+            #endregion
 
         }
     }

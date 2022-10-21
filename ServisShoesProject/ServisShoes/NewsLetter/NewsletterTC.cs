@@ -13,6 +13,7 @@ namespace ServisShoesProject.ServisShoes.NewsLetter
     [TestClass]
     public class NewsletterTC : Basepage
     {
+        #region Setup and Cleanup
         public TestContext instance;
 
         public TestContext TestContext
@@ -48,6 +49,12 @@ namespace ServisShoesProject.ServisShoes.NewsLetter
             CloseDriver();
         }
 
+
+        #endregion
+
+
+
+        #region NewSLetter Test Cases
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "Testdata.xml", "NewletterWithValid", DataAccessMethod.Sequential)]
 
@@ -99,5 +106,6 @@ namespace ServisShoesProject.ServisShoes.NewsLetter
 
 
         }
+        #endregion
     }
 }

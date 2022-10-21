@@ -12,7 +12,7 @@ namespace ServisShoesProject.ServisShoes.Wishlist
     public class Wishlist : Basepage
     {
 
-
+        #region WishListPage Locators
         By prodt = By.XPath("//a[@href='/collections/men-sandal-chapal']");
 
         By chapp = By.CssSelector("#ProductCard-template--14192492445814__collection-6722006646902 > a > div.product-card__labels-container.inset-0.absolute");
@@ -22,10 +22,14 @@ namespace ServisShoesProject.ServisShoes.Wishlist
         By btnadd = By.Id("AddToCart-template--14192492839030__product");
         By viewcart = By.Id("cart-notification-form");
 
+        #endregion
+
+        #region Wishlist Method
+
         public void Wishlistmeth()
         {
+            PageLoad();
             Click(prodt);
-
             Click(chapp);
             Click(size);
             Click(quanityt);
@@ -34,7 +38,8 @@ namespace ServisShoesProject.ServisShoes.Wishlist
             ImplicitWait();
             Click(viewcart);
         }
+        #endregion
     }
 
-        
+
 }

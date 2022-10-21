@@ -13,6 +13,7 @@ namespace ServisShoesProject.ServisShoes.ContactUs
     [TestClass]
     public  class ContactPageTC : Basepage
     {
+        #region Setup and Cleanup
         public TestContext instance;
 
         public TestContext TestContext
@@ -49,6 +50,10 @@ namespace ServisShoesProject.ServisShoes.ContactUs
             CloseDriver();
         }
 
+        #endregion
+
+
+        #region Contact US Test Cases
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "Testdata.xml", "ContactusWithValid", DataAccessMethod.Sequential)]
 
@@ -122,6 +127,6 @@ namespace ServisShoesProject.ServisShoes.ContactUs
             Assert.AreEqual(expected, actual);
         }
 
-
+        #endregion
     }
 }

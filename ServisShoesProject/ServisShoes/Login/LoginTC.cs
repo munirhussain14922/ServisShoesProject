@@ -12,6 +12,7 @@ namespace ServisShoesProject.ServisShoes.Login
     [TestClass]
     public class LoginTC : Basepage
     {
+        #region Setup and Cleanup
         public TestContext instance;
 
         public TestContext TestContext
@@ -56,8 +57,9 @@ namespace ServisShoesProject.ServisShoes.Login
         {
             CloseDriver();
         }
+        #endregion
 
-
+        #region Login Test Cases
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "Testdata.xml", "LoginWithValid", DataAccessMethod.Sequential)]
         public void Valid_LoginTC()
@@ -109,7 +111,7 @@ namespace ServisShoesProject.ServisShoes.Login
         }
 
 
-
+        #endregion
 
     }
 }

@@ -10,6 +10,7 @@ namespace ServisShoesProject.ServisShoes.Search
 {
     public class Search : Basepage
     {
+        #region SearchPage Locators
         By search1 = By.XPath("//button[@aria-controls='SearchBar-header-top']");
         By searchinput = By.Id("SearchBarInput-header-top");
         By enter = By.XPath("(//div[@class='search-bar__icon absolute right-0 inset-y-0 w-6 mr-4 z-10 group-focus-within:text-primary-accent'])[1]");
@@ -22,10 +23,14 @@ namespace ServisShoesProject.ServisShoes.Search
         
         By color = By.Id("Filter-filter.v.option.color-2");
         By size = By.Id("Filter-filter.v.option.size-3");
+        #endregion
 
+
+        #region Search Method
 
         public void search(String searching, String frprice, String toprice)
         {
+            PageLoad();
             Click(search1);
             Write(searchinput, searching);
             Click(enter);
@@ -42,5 +47,6 @@ namespace ServisShoesProject.ServisShoes.Search
             Click(color);
             //Click(size);
         }
+        #endregion
     }
 }

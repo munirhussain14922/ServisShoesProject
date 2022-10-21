@@ -12,6 +12,7 @@ namespace ServisShoesProject.ServisShoes.Register
 {
     public class Register : Basepage
     {
+        #region RegisterPage Locators
         By reclick = By.XPath("//a[@href='/account/register']");
         By fname = By.Id("CreateCustomerForm-firstname");
         By lname = By.Id("CreateCustomerForm-lastname");
@@ -19,10 +20,16 @@ namespace ServisShoesProject.ServisShoes.Register
         By passwrd = By.Id("CreateCustomerForm-password");
         By cbtna = By.XPath("//input[@type='submit' and @class='shopify-challenge__button btn']");
         By regbtn = By.CssSelector("#create_customer > div > div.flex.items-center.flex-col.justify-center > button");
-        By newscancel = By.XPath("//img[@class='news-close-img']");
+        //By newscancel = By.XPath("//img[@class='news-close-img']");
 
+
+        #endregion
+
+
+        #region Register Method
         public void Registerfun(String firstname, String lastname, String regmail, String paswrd)
         {
+            PageLoad();
             Click(reclick);
             Write(fname, firstname);
             Write(lname, lastname);
@@ -30,9 +37,10 @@ namespace ServisShoesProject.ServisShoes.Register
             Write(passwrd, paswrd);
             Click(regbtn);
             PlaybackWait(12000);
-            Click(newscancel);
+            //Click(newscancel);
             Click(cbtna);
             
         }
+        #endregion
     }
 }

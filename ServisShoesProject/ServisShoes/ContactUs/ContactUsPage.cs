@@ -13,6 +13,7 @@ namespace ServisShoesProject.ServisShoes.ContactUs
    
     public class ContactUsPage : Basepage
     {
+        #region Conatact US Page Locators
         By btncont = By.XPath("//a[@href='/pages/contact-us']");
         By name = By.Id("ContactForm-name");
         By mail = By.Id("ContactForm-email");
@@ -22,12 +23,17 @@ namespace ServisShoesProject.ServisShoes.ContactUs
         By ho = By.Id("DetailsMenu-header-menu-1");
         By homenu = By.CssSelector("#InlineMenu-header-menu-child-1 > li:nth-child(1)");
         By cbtna = By.XPath("//input[@type='submit' and @class='shopify-challenge__button btn']");
-        By newscancel = By.XPath("//img[@class='news-close-img']");
+        //By newscancel = By.XPath("//img[@class='news-close-img']");
+
+
+        #endregion
 
 
 
+        #region Contact US page Method
         public void cont(String namee, String emailo, String phoneno, String comment)
         {
+            PageLoad();
             //hoverhandle(ho);
             //Click(homenu);
             Click(btncont);
@@ -37,10 +43,10 @@ namespace ServisShoesProject.ServisShoes.ContactUs
             Write(cmt, comment);
             Click(btn);
             PlaybackWait(20000);
-            Click(newscancel);
+            //Click(newscancel);
             Click(cbtna);
         }
-     
-       
+
+        #endregion
     }
 }

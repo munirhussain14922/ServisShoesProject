@@ -48,7 +48,7 @@ namespace ServisShoesProject.ServisShoes.Search
             CloseDriver();
         }
         #endregion
-        #region Test Case 1
+        #region Test Cases
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "Testdata.xml", "SearchWithinValid", DataAccessMethod.Sequential)]
 

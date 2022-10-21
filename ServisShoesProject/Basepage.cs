@@ -12,6 +12,9 @@ using OpenQA.Selenium.Support.UI;
 using AventStack.ExtentReports;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
+using Microsoft.Extensions.Logging;
+using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
+
 
 namespace ServisShoesProject.ServisShoes.Login
 { 
@@ -76,14 +79,54 @@ namespace ServisShoesProject.ServisShoes.Login
         public void Click(By by)
 
         {
-            try
-            {
-                driver.FindElement(by).Click();
-            }
-            catch (Exception)
-            {
+            //try
+            //{
+            //    driver.FindElement(By.XPath("//img[@class='news-close-img']")).Click();
+            //}
+            //catch (WebDriverException ex)
+            //{
+            //    Logger.LogMessage("WebDriver exception: ", ex);
+            //    driver.FindElement(by).Click();
+            //    //element.click();
+            //}
+            //try
+            //{
+            //    driver.FindElement(By.XPath("//img[@class='news-close-img']")).Click();
+            //}
+            //catch (Exception exa)
+            //{
+            //    Logger.LogMessage("WebDriver exception: ", exa);
 
-            }
+            //    driver.FindElement(by).Click();
+
+            //}
+
+
+            //try
+            //{
+                try
+                {
+                    driver.FindElement(By.XPath("//img[@class='news-close-img']")).Click();
+                    driver.FindElement(by).Click();
+
+                }
+                catch (Exception)
+                {
+                    //Logger.LogMessage("WebDriver exception: ", exa);
+
+                    driver.FindElement(by).Click();
+                }
+
+
+                
+
+           // }
+            //catch (Exception ex)
+            //{
+            //    //Logger.LogMessage("WebDriver exception: ", ex);
+
+            //    driver.FindElement(by).Click();
+            //}
 
         }
 
@@ -170,6 +213,11 @@ namespace ServisShoesProject.ServisShoes.Login
         public static void ImplicitWait()
         {
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+
+        }
+        public static void PageLoad()
+        {
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(50);
 
         }
 

@@ -38,6 +38,9 @@ namespace ServisShoesProject.ServisShoes.Wishlist
             CloseDriver();
         }
         #endregion
+
+
+        #region Wishlist Test Case
         [TestMethod]
         public void WishlistWithValid()
         {
@@ -50,6 +53,9 @@ namespace ServisShoesProject.ServisShoes.Wishlist
 
             cartlist.Wishlistmeth();
             ExtentReport.exChildTest.Log(Status.Pass, "Click Product");
+            //
+            //ExtentReport.exChildTest.Log(Status.Fail, "Click Product");
+
             ExtentReport.exChildTest.Log(Status.Pass, "Click Chappal");
             ExtentReport.exChildTest.Log(Status.Pass, "Click Quantity");
             ExtentReport.exChildTest.Log(Status.Pass, "Click Add To Cart");
@@ -61,5 +67,6 @@ namespace ServisShoesProject.ServisShoes.Wishlist
 
 
         }
+        #endregion
     }
 }
